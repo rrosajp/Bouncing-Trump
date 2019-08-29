@@ -7,23 +7,22 @@
 // The function gets called when the window is fully loaded
 window.onload = function() {
     // Get the canvas and context
-    var canvas = document.getElementById("viewport"); 
+    var canvas = document.getElementById("trump-canvas");
+    canvas.width = document.body.clientWidth; //document.width is obsolete
+    canvas.height = document.body.clientHeight; //document.height is obsolete
     var context = canvas.getContext("2d");
     
-    // Timing and frames per second
+    // Timing and frames
     var lastframe = 0;
-    var fpstime = 0;
-    var framecount = 0;
-    var fps = 0;
 
     var initialized = false;
     
     // Level properties
     var level = {
         x: 1,
-        y: 65,
-        width: canvas.width - 2,
-        height: canvas.height - 66
+        y: 1,
+        width: canvas.width,
+        height: canvas.height
     };
     
     // Define an entity class
@@ -82,35 +81,53 @@ window.onload = function() {
         return loadedimages;
     }
 
-    // Initialize the game
-    function init() {
+    // Initialize
+    function init(image) {
+        // Random Tilt
+        var tilt = Math.floor((Math.random() * 360) + 1);
         // Load images
-        images = loadImages(["sprite1.png", "sprite2.png", "sprite3.png"]);
-    
-        // Add mouse events
-        canvas.addEventListener("mousemove", onMouseMove);
-        canvas.addEventListener("mousedown", onMouseDown);
-        canvas.addEventListener("mouseup", onMouseUp);
-        canvas.addEventListener("mouseout", onMouseOut);
+        images = loadImages([image]);
         
         // Create random entities
-        for (var i=0; i<15; i++) {
-            var scale = randRange(50, 100);
+        for (var i=0; i<1; i++) {
+            var scale = randRange(75, 200);
             var imageindex = i % images.length;
             var xdir = 1 - 2 * randRange(0, 1);
             var ydir = 1 - 2 * randRange(0, 1);
-            var entity = new Entity(images[imageindex], 0, 0, scale, scale, xdir, ydir, randRange(100, 400));
-            
+            var entity = new Entity(images[imageindex], 0, 0, scale, scale, xdir, ydir, randRange(100, 100));
+
             // Set a random position
             entity.x = randRange(0, level.width-entity.width);
             entity.y = randRange(0, level.height-entity.height);
-            
+
             // Add to the entities array
             entities.push(entity);
         }
-    
+
         // Enter main loop
         main(0);
+    }
+
+    // Add Trump
+    function addTrump(image) {
+        // Load images
+        images = loadImages([image]);
+
+        // Create random entities
+        for (var i=0; i<1; i++) {
+            var scale = randRange(75, 200);
+            var imageindex = i % images.length;
+            var xdir = 1 - 2 * randRange(0, 1);
+            var ydir = 1 - 2 * randRange(0, 1);
+            var entity = new Entity(images[imageindex], 0, 0, scale, scale, xdir, ydir, randRange(100, 100));
+
+            // Set a random position
+            entity.x = randRange(0, level.width-entity.width);
+            entity.y = randRange(0, level.height-entity.height);
+
+            // Add to the entities array
+            entities.push(entity);
+        }
     }
     
     // Get a random int between low and high, inclusive
@@ -125,46 +142,27 @@ window.onload = function() {
 
         if (!initialized) {
             // Preloader
-            
             // Clear the canvas
             context.clearRect(0, 0, canvas.width, canvas.height);
-            
             // Draw the frame
             drawFrame();
-            
-            // Draw a progress bar
-            var loadpercentage = loadcount/loadtotal;
-            context.strokeStyle = "#ff8080";
-            context.lineWidth=3;
-            context.strokeRect(18.5, 0.5 + canvas.height - 51, canvas.width-37, 32);
-            context.fillStyle = "#ff8080";
-            context.fillRect(18.5, 0.5 + canvas.height - 51, loadpercentage*(canvas.width-37), 32);
-            
-            // Draw the progress text
-            var loadtext = "Loaded " + loadcount + "/" + loadtotal + " images";
-            context.fillStyle = "#000000";
-            context.font = "16px Verdana";
-            context.fillText(loadtext, 18, 0.5 + canvas.height - 63);
-            
             if (preloaded) {
                 // Add a delay for demonstration purposes
-                setTimeout(function(){initialized = true;}, 1000);
+                // setTimeout(function(){initialized = true;}, 1000);
+                initialized = true;
             }
         } else {
-            // Update and render the game
+            // Update and render
             update(tframe);
             render();
         }
     }
     
-    // Update the game state
+    // Update state
     function update(tframe) {
         var dt = (tframe - lastframe) / 1000;
         lastframe = tframe;
-        
-        // Update the fps counter
-        updateFps(dt);
-        
+
         // Update entities
         for (var i=0; i<entities.length; i++) {
             var entity = entities[i];
@@ -197,22 +195,7 @@ window.onload = function() {
         }
     }
     
-    function updateFps(dt) {
-        if (fpstime > 0.25) {
-            // Calculate fps
-            fps = Math.round(framecount / fpstime);
-            
-            // Reset time and framecount
-            fpstime = 0;
-            framecount = 0;
-        }
-        
-        // Increase time and framecount
-        fpstime += dt;
-        framecount++;
-    }
-    
-    // Render the game
+    // Render
     function render() {
         // Draw the frame
         drawFrame();
@@ -223,45 +206,50 @@ window.onload = function() {
             context.drawImage(entity.image, entity.x, entity.y, entity.width, entity.height);
         }
     }
+
+    function reset() {
+        // Clear the canvas TODO: make better
+        entities = [];
+        init(getRndTrump());
+    }
     
     // Draw a frame with a border
     function drawFrame() {
-        // Draw background and a border
-        context.fillStyle = "#d0d0d0";
+        // Draw background
+        context.fillStyle = "#363636";
         context.fillRect(0, 0, canvas.width, canvas.height);
-        context.fillStyle = "#e8eaec";
-        context.fillRect(1, 1, canvas.width-2, canvas.height-2);
-        
-        // Draw header
-        context.fillStyle = "#303030";
-        context.fillRect(0, 0, canvas.width, 65);
-        
-        // Draw title
-        context.fillStyle = "#ffffff";
-        context.font = "24px Verdana";
-        context.fillText("Load And Draw Images - Rembound.com", 10, 30);
-        
-        // Display fps
-        context.fillStyle = "#ffffff";
-        context.font = "12px Verdana";
-        context.fillText("Fps: " + fps, 13, 50);
     }
-    
-    // Mouse event handlers
-    function onMouseMove(e) {}
-    function onMouseDown(e) {}
-    function onMouseUp(e) {}
-    function onMouseOut(e) {}
-    
-    // Get the mouse position
-    function getMousePos(canvas, e) {
-        var rect = canvas.getBoundingClientRect();
-        return {
-            x: Math.round((e.clientX - rect.left)/(rect.right - rect.left)*canvas.width),
-            y: Math.round((e.clientY - rect.top)/(rect.bottom - rect.top)*canvas.height)
-        };
+
+    function getRndTrump() {
+        return "images/trump" + (Math.floor(Math.random() * (8 - 1) ) + 1) + ".png";
     }
-    
-    // Call init to start the game
-    init();
+
+    // Add Trump
+    document.getElementById('add-trump').onclick = function(e) {
+        addTrump(getRndTrump());
+        // Show the remove trump button once there are more than 1 trump
+        if (entities.length > 1) {
+            document.getElementById("remove-trump").style.visibility = "visible";
+        }
+    }
+    // Remove Trump
+    document.getElementById('remove-trump').onclick = function(e) {
+        entities.pop();
+        // Hide the remove trump button once there is only 1 trump
+        if (entities.length < 2) {
+            document.getElementById("remove-trump").style.visibility = "hidden";
+        }
+    }
+    // Reset
+    document.getElementById('reset').onclick = function(e) {
+        reset();
+        // Hide the remove trump button once there is only 1 trump
+        if (entities.length < 2) {
+            document.getElementById("remove-trump").style.visibility = "hidden";
+        }
+    }
+
+    // Call init to start
+    init(getRndTrump());
+
 };
