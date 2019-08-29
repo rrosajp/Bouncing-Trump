@@ -13,11 +13,9 @@ body {
     text-align:center;
     z-index:0;
 }
-.trump-spin {
-  animation-name: spin;
-  animation-duration: 17000ms;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear; 
+#trump-canvas {
+    height: 100%;
+    width: 100%;
 }
 #dumb-circle {
     background: url("../images/dumb-square.png");
