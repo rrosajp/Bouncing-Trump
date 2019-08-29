@@ -9,7 +9,7 @@
 // The function gets called when the window is fully loaded
 window.onload = function() {
     // Get the canvas and context
-    var total_trumps = 14;
+    var total_trumps = 15;
     var canvas = document.getElementById("trump-canvas");
     canvas.width = document.body.clientWidth;
     canvas.height = document.body.clientHeight;
