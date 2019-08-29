@@ -225,9 +225,7 @@ window.onload = function() {
 
     function getRndTrump() {
         trump = "images/trump" + (Math.floor(Math.random() * (total_trumps - 1) ) + 2) + ".png";
-        console.log(trump);
         return trump;
-
     }
 
     // Add Trump
