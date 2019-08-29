@@ -221,7 +221,10 @@ window.onload = function() {
     }
 
     function getRndTrump() {
-        return "images/trump" + (Math.floor(Math.random() * (8 - 1) ) + 1) + ".png";
+        trump = "images/trump" + (Math.floor(Math.random() * (12 - 1) ) + 1) + ".png";
+        console.log(trump);
+        return trump;
+
     }
 
     // Add Trump
@@ -231,7 +234,7 @@ window.onload = function() {
         if (entities.length > 1) {
             document.getElementById("remove-trump").style.visibility = "visible";
         }
-    }
+    };
     // Remove Trump
     document.getElementById('remove-trump').onclick = function(e) {
         entities.pop();
@@ -239,7 +242,7 @@ window.onload = function() {
         if (entities.length < 2) {
             document.getElementById("remove-trump").style.visibility = "hidden";
         }
-    }
+    };
     // Reset
     document.getElementById('reset').onclick = function(e) {
         reset();
@@ -247,7 +250,7 @@ window.onload = function() {
         if (entities.length < 2) {
             document.getElementById("remove-trump").style.visibility = "hidden";
         }
-    }
+    };
 
     // Call init to start
     init(getRndTrump());
