@@ -8,6 +8,29 @@
 
 // The function gets called when the window is fully loaded
 window.onload = function() {
+    // Ensure aspect ratio is maintained when window resizes
+    function resize() {
+
+        var canvas = document.getElementById('trump-canvas');
+        var canvasRatio = canvas.height / canvas.width;
+        var windowRatio = window.innerHeight / window.innerWidth;
+        var width;
+        var height;
+
+        if (windowRatio < canvasRatio) {
+            height = window.innerHeight;
+            width = height / canvasRatio;
+        } else {
+            width = window.innerWidth;
+            height = width * canvasRatio;
+        }
+
+        canvas.style.width = width + 'px';
+        canvas.style.height = height + 'px';
+    }
+
+    window.addEventListener('resize', resize, false);
+
     // Get the canvas and context
     var total_trumps = 16;
     var canvas = document.getElementById("trump-canvas");
@@ -86,26 +109,8 @@ window.onload = function() {
 
     // Initialize
     function init(image) {
-        // Random Tilt
-        var tilt = Math.floor((Math.random() * 360) + 1);
-        // Load images
-        images = loadImages([image]);
-        
-        // Create random entities
-        for (var i=0; i<1; i++) {
-            var scale = randRange(75, 200);
-            var imageindex = i % images.length;
-            var xdir = 1 - 2 * randRange(0, 1);
-            var ydir = 1 - 2 * randRange(0, 1);
-            var entity = new Entity(images[imageindex], 0, 0, scale, scale, xdir, ydir, randRange(100, 100));
-
-            // Set a random position
-            entity.x = randRange(0, level.width-entity.width);
-            entity.y = randRange(0, level.height-entity.height);
-
-            // Add to the entities array
-            entities.push(entity);
-        }
+        // Add Trump
+        addTrump(image);
 
         // Enter main loop
         main(0);
