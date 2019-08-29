@@ -1,6 +1,8 @@
 // --------------------------------------------------------------------------
-// How To Load And Draw Images With HTML5 Canvas
-// (c) 2015 Rembound.com
+// Bouncing Trump
+// (c) 2019 https://bouncingtrump.com
+//
+// Based on the following tutorial
 // http://rembound.com/articles/how-to-load-and-draw-images-with-html5-canvas
 // --------------------------------------------------------------------------
 
