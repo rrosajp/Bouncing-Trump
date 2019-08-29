@@ -9,6 +9,7 @@
 // The function gets called when the window is fully loaded
 window.onload = function() {
     // Get the canvas and context
+    var total_trumps = 12;
     var canvas = document.getElementById("trump-canvas");
     canvas.width = document.body.clientWidth;
     canvas.height = document.body.clientHeight;
@@ -223,7 +224,7 @@ window.onload = function() {
     }
 
     function getRndTrump() {
-        trump = "images/trump" + (Math.floor(Math.random() * (12 - 1) ) + 1) + ".png";
+        trump = "images/trump" + (Math.floor(Math.random() * (total_trumps - 1) ) + 2) + ".png";
         console.log(trump);
         return trump;
 
