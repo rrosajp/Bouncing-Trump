@@ -9,7 +9,7 @@
 // The function gets called when the window is fully loaded
 window.onload = function() {
     // Get the canvas and context
-    var total_trumps = 15;
+    var total_trumps = 16;
     var canvas = document.getElementById("trump-canvas");
     canvas.width = document.body.clientWidth;
     canvas.height = document.body.clientHeight;
@@ -143,15 +143,14 @@ window.onload = function() {
         // Request animation frames
         window.requestAnimationFrame(main);
 
+        // Preloader
         if (!initialized) {
-            // Preloader
             // Clear the canvas
             context.clearRect(0, 0, canvas.width, canvas.height);
+
             // Draw the frame
             drawFrame();
             if (preloaded) {
-                // Add a delay for demonstration purposes
-                // setTimeout(function(){initialized = true;}, 1000);
                 initialized = true;
             }
         } else {
@@ -163,6 +162,8 @@ window.onload = function() {
     
     // Update state
     function update(tframe) {
+        var TO_RADIANS = Math.PI/180;
+
         var dt = (tframe - lastframe) / 1000;
         lastframe = tframe;
 
@@ -202,9 +203,9 @@ window.onload = function() {
     function render() {
         // Draw the frame
         drawFrame();
-        
+
+        // Draw the entities
         for (var i=0; i<entities.length; i++) {
-            // Draw the entity
             var entity = entities[i];
             context.drawImage(entity.image, entity.x, entity.y, entity.width, entity.height);
         }
