@@ -162,8 +162,6 @@ window.onload = function() {
     
     // Update state
     function update(tframe) {
-        var TO_RADIANS = Math.PI/180;
-
         var dt = (tframe - lastframe) / 1000;
         lastframe = tframe;
 
@@ -212,7 +210,7 @@ window.onload = function() {
     }
 
     function reset() {
-        // Clear the canvas TODO: make better
+        // Clear the canvas
         entities = [];
         init(getRndTrump());
     }
@@ -223,32 +221,35 @@ window.onload = function() {
         context.fillStyle = "#363636";
         context.fillRect(0, 0, canvas.width, canvas.height);
     }
-
+    
+    // Get a random Trump
     function getRndTrump() {
-        trump = "images/trump" + (Math.floor(Math.random() * (total_trumps - 1) ) + 2) + ".png";
+        trump = "images/trump" + (Math.floor(Math.random() * (total_trumps - 1)) + 2) + ".png";
         return trump;
     }
 
     // Add Trump
     document.getElementById('add-trump').onclick = function(e) {
         addTrump(getRndTrump());
-        // Show the remove trump button once there are more than 1 trump
+        // Show the remove trump button once there are more than 1 Trump
         if (entities.length > 1) {
             document.getElementById("remove-trump").style.visibility = "visible";
         }
     };
+
     // Remove Trump
     document.getElementById('remove-trump').onclick = function(e) {
         entities.pop();
-        // Hide the remove trump button once there is only 1 trump
+        // Hide the remove trump button once there is only 1 Trump
         if (entities.length < 2) {
             document.getElementById("remove-trump").style.visibility = "hidden";
         }
     };
+
     // Reset
     document.getElementById('reset').onclick = function(e) {
         reset();
-        // Hide the remove trump button once there is only 1 trump
+        // Hide the remove trump button once there is only 1 Trump
         if (entities.length < 2) {
             document.getElementById("remove-trump").style.visibility = "hidden";
         }
