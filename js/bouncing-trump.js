@@ -10,8 +10,8 @@
 window.onload = function() {
     // Get the canvas and context
     var canvas = document.getElementById("trump-canvas");
-    canvas.width = document.body.clientWidth; //document.width is obsolete
-    canvas.height = document.body.clientHeight; //document.height is obsolete
+    canvas.width = document.body.clientWidth;
+    canvas.height = document.body.clientHeight;
     var context = canvas.getContext("2d");
     
     // Timing and frames
