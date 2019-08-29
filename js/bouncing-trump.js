@@ -13,15 +13,15 @@ window.onload = function() {
 
         var canvas = document.getElementById('trump-canvas');
         var canvasRatio = canvas.height / canvas.width;
-        var windowRatio = window.innerHeight / window.innerWidth;
+        var windowRatio = document.body.clientHeight / document.body.clientWidth;
         var width;
         var height;
 
         if (windowRatio < canvasRatio) {
-            height = window.innerHeight;
+            height = document.body.clientHeight;
             width = height / canvasRatio;
         } else {
-            width = window.innerWidth;
+            width = document.body.clientWidth;
             height = width * canvasRatio;
         }
 
