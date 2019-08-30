@@ -8,29 +8,6 @@
 
 // The function gets called when the window is fully loaded
 window.onload = function() {
-    // Ensure aspect ratio is maintained when window resizes
-    function resize() {
-
-        var canvas = document.getElementById('trump-canvas');
-        var canvasRatio = canvas.height / canvas.width;
-        var windowRatio = document.body.clientHeight / document.body.clientWidth;
-        var width;
-        var height;
-
-        if (windowRatio < canvasRatio) {
-            height = document.body.clientHeight;
-            width = height / canvasRatio;
-        } else {
-            width = document.body.clientWidth;
-            height = width * canvasRatio;
-        }
-
-        canvas.style.width = width + 'px';
-        canvas.style.height = height + 'px';
-    }
-
-    window.addEventListener('resize', resize, false);
-
     // Get the canvas and context
     var total_trumps = 16;
     var canvas = document.getElementById("trump-canvas");
