@@ -206,6 +206,9 @@ window.onload = function () {
         // Remove Trump button toggle
         removeTrumpToggle();
 
+        // Happy Trump
+        happyTrump();
+
         // Start Bouncing Trump
         init(getRndTrump());
     }
@@ -301,14 +304,17 @@ window.onload = function () {
                 icon: "error",
                 closeOnClickOutside: false,
                 button: "OK",
+                timer: 5000,
             })
             .then((value) => {
                 reset();
-                happyTrump();
             });
         }
-        else {
+        else if (entities.length < 50) {
             happyTrump();
+        }
+        else  {
+            dangeTrump();
         }
     }
 
