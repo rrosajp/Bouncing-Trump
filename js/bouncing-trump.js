@@ -309,8 +309,10 @@ window.onload = function () {
             .then((value) => {
                 reset();
             });
+
+            console(swal.getState());
         }
-        else if (entities.length < 50) {
+        else if (entities.length <= 50) {
             happyTrump();
         }
         else  {
@@ -324,8 +326,8 @@ window.onload = function () {
         document.getElementById("trump-count").style.borderColor = "#1e7e34";
         document.getElementById("trump-status").className = "";
         document.getElementById("trump-status").innerHTML = "";
-        document.getElementById("trump-status").classList.add("far")
-        document.getElementById("trump-status").classList.add("fa-smile")
+        document.getElementById("trump-status").classList.add("far");
+        document.getElementById("trump-status").classList.add("fa-smile");
         document.getElementById("trump-count").classList.remove("flashit")
     }
 
@@ -335,8 +337,8 @@ window.onload = function () {
         document.getElementById("trump-count").style.borderColor = "#d39e00";
         document.getElementById("trump-status").className = "";
         document.getElementById("trump-status").innerHTML = "";
-        document.getElementById("trump-status").classList.add("far")
-        document.getElementById("trump-status").classList.add("fa-meh")
+        document.getElementById("trump-status").classList.add("far");
+        document.getElementById("trump-status").classList.add("fa-meh");
         document.getElementById("trump-count").classList.remove("flashit")
     }
 
@@ -346,8 +348,8 @@ window.onload = function () {
         document.getElementById("trump-count").style.borderColor = "#bd2130";
         document.getElementById("trump-status").className = "";
         document.getElementById("trump-status").innerHTML = "";
-        document.getElementById("trump-status").classList.add("far")
-        document.getElementById("trump-status").classList.add("fa-frown")
+        document.getElementById("trump-status").classList.add("far");
+        document.getElementById("trump-status").classList.add("fa-frown");
         document.getElementById("trump-count").classList.remove("flashit")
     }
 
@@ -357,8 +359,8 @@ window.onload = function () {
         document.getElementById("trump-count").style.borderColor = "#bd2130";
         document.getElementById("trump-status").className = "";
         document.getElementById("trump-status").innerHTML = "";
-        document.getElementById("trump-status").classList.add("fas")
-        document.getElementById("trump-status").classList.add("fa-exclamation-triangle")
+        document.getElementById("trump-status").classList.add("fas");
+        document.getElementById("trump-status").classList.add("fa-exclamation-triangle");
         document.getElementById("trump-count").classList.add("flashit")
     }
 
