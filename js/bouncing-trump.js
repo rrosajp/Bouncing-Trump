@@ -301,9 +301,11 @@ window.onload = function () {
                 icon: "error",
                 closeOnClickOutside: false,
                 button: "OK",
+            })
+            .then((value) => {
+                reset();
+                happyTrump();
             });
-            reset();
-            happyTrump();
         }
         else {
             happyTrump();
