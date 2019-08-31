@@ -36,6 +36,16 @@ body {
     cursor: pointer;
     opacity: 1;
 }
+#trump-stats {
+    position:fixed;
+    top:5px;
+    right:7px;
+}
+#trump-count {
+    background: #1e7e34;
+    color: white;
+    font-size: 2em;
+}
 #social {
     position:absolute;
     bottom:5px;
@@ -45,6 +55,9 @@ body {
     position:fixed;
     bottom:5px;
     right:7px;
+}
+#remove-trump {
+    visibility: hidden;
 }
 .btn:focus,.btn:active {
     outline: none !important;
@@ -67,6 +80,15 @@ body {
         transform:rotate(360deg);
     }
 }
+.flashit{
+    color:#f2f;
+    animation: flash linear 1s infinite;
+}
+@keyframes flash {
+    0% { opacity: 1; }
+    50% { opacity: .1; }
+    100% { opacity: 1; }
+}
 @media only screen and (max-width: 500px) {
     .btn-responsive {
         font-size:90%;
@@ -76,6 +98,9 @@ body {
     #dumb-circle {
         width: 45px;
         height: 45px;
+    }
+    #trump-count {
+        font-size: 1.5em;
     }
 }
 

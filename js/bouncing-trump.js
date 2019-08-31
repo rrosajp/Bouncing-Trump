@@ -202,6 +202,11 @@ window.onload = function () {
     function reset() {
         // Clear the canvas
         entities = [];
+
+        // Remove Trump button toggle
+        removeTrumpToggle();
+
+        // Start Bouncing Trump
         init(getRndTrump());
     }
 
@@ -237,6 +242,9 @@ window.onload = function () {
 
                 // Remove trump button toggle
                 removeTrumpToggle();
+
+                // Update Trump count
+                updateTrumpCount();
             }
         }
 
@@ -275,18 +283,89 @@ window.onload = function () {
         }
     }
 
+    // Update Trump count
+    function updateTrumpCount() {
+        // document.getElementById("trump-status").innerHTML = entities.length;
+        if (entities.length > 50 && entities.length < 100) {
+            mehTrump();
+        }
+        else if (entities.length > 99 && entities.length < 150) {
+            sadTrump();
+        }
+        else if (entities.length > 149 && entities.length < 200) {
+            dangeTrump();
+        }
+        else if (entities.length == 200) {
+            alert("Bouncing Trump limit exceeded!");
+            reset();
+            happyTrump();
+        }
+        else {
+            happyTrump();
+        }
+    }
+
+    // Happy Trump
+    function happyTrump() {
+        document.getElementById("trump-count").style.background = "#1e7e34";
+        document.getElementById("trump-status").className = "";
+        document.getElementById("trump-status").innerHTML = "";
+        document.getElementById("trump-status").classList.add("far")
+        document.getElementById("trump-status").classList.add("fa-smile")
+        document.getElementById("trump-count").classList.remove("flashit")
+    }
+
+    // Meh Trump
+    function mehTrump() {
+        document.getElementById("trump-count").style.background = "#d39e00";
+        document.getElementById("trump-status").className = "";
+        document.getElementById("trump-status").innerHTML = "";
+        document.getElementById("trump-status").classList.add("far")
+        document.getElementById("trump-status").classList.add("fa-meh")
+        document.getElementById("trump-count").classList.remove("flashit")
+    }
+
+    // Sad Trump
+    function sadTrump() {
+        document.getElementById("trump-count").style.background = "#bd2130";
+        document.getElementById("trump-status").className = "";
+        document.getElementById("trump-status").innerHTML = "";
+        document.getElementById("trump-status").classList.add("far")
+        document.getElementById("trump-status").classList.add("fa-frown")
+        document.getElementById("trump-count").classList.remove("flashit")
+    }
+
+    // Danger Trump
+    function dangeTrump() {
+        document.getElementById("trump-count").style.background = "#bd2130";
+        document.getElementById("trump-status").className = "";
+        document.getElementById("trump-status").innerHTML = "";
+        document.getElementById("trump-status").classList.add("fas")
+        document.getElementById("trump-status").classList.add("fa-exclamation-triangle")
+        document.getElementById("trump-count").classList.add("flashit")
+    }
+
     // Add Trump
     document.getElementById('add-trump').onclick = function (e) {
+        // Add new Trump
         addTrump(getRndTrump(), 1);
-        // Remove trump button toggle
+
+        // Remove Trump button toggle
         removeTrumpToggle();
+
+        // Update Trump count
+        updateTrumpCount();
     };
 
     // Remove Trump
     document.getElementById('remove-trump').onclick = function (e) {
+        // Remove last Trump
         entities.pop();
         // Remove trump button toggle
         removeTrumpToggle();
+
+        // Update Trump count
+        updateTrumpCount();
     };
 
     // Reset
@@ -294,9 +373,12 @@ window.onload = function () {
         reset();
         // Remove trump button toggle
         removeTrumpToggle();
+
+        // Update Trump count
+        updateTrumpCount();
     };
 
-    // Call init to start
+    // Start Bouncing Trump
     init(getRndTrump());
 
 };
