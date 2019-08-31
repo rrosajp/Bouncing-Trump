@@ -304,7 +304,7 @@ window.onload = function () {
                 icon: "error",
                 closeOnClickOutside: false,
                 button: "OK",
-                timer: 5000,
+                timer: 10000,
             })
             .then((value) => {
                 reset();
