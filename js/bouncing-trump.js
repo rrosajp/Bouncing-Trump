@@ -285,7 +285,6 @@ window.onload = function () {
 
     // Update Trump count
     function updateTrumpCount() {
-        // document.getElementById("trump-status").innerHTML = entities.length;
         if (entities.length > 50 && entities.length < 100) {
             mehTrump();
         }
