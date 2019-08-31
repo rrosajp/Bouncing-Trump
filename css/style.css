@@ -59,6 +59,14 @@ body {
 #remove-trump {
     visibility: hidden;
 }
+.swal-button {
+    background: #007bff;
+    border-color: #007bff;
+}
+.swal-button:not([disabled]):hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
 .btn:focus,.btn:active {
     outline: none !important;
     box-shadow: none;

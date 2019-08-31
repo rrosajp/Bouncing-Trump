@@ -295,7 +295,13 @@ window.onload = function () {
             dangeTrump();
         }
         else if (entities.length == 200) {
-            alert("Bouncing Trump limit exceeded!");
+            swal({
+                title: "Oh Snap!",
+                text: "Bouncing Trump limit exceeded!",
+                icon: "error",
+                closeOnClickOutside: false,
+                button: "OK",
+            });
             reset();
             happyTrump();
         }
@@ -307,6 +313,7 @@ window.onload = function () {
     // Happy Trump
     function happyTrump() {
         document.getElementById("trump-count").style.background = "#1e7e34";
+        document.getElementById("trump-count").style.borderColor = "#1e7e34";
         document.getElementById("trump-status").className = "";
         document.getElementById("trump-status").innerHTML = "";
         document.getElementById("trump-status").classList.add("far")
@@ -317,6 +324,7 @@ window.onload = function () {
     // Meh Trump
     function mehTrump() {
         document.getElementById("trump-count").style.background = "#d39e00";
+        document.getElementById("trump-count").style.borderColor = "#d39e00";
         document.getElementById("trump-status").className = "";
         document.getElementById("trump-status").innerHTML = "";
         document.getElementById("trump-status").classList.add("far")
@@ -327,6 +335,7 @@ window.onload = function () {
     // Sad Trump
     function sadTrump() {
         document.getElementById("trump-count").style.background = "#bd2130";
+        document.getElementById("trump-count").style.borderColor = "#bd2130";
         document.getElementById("trump-status").className = "";
         document.getElementById("trump-status").innerHTML = "";
         document.getElementById("trump-status").classList.add("far")
@@ -337,6 +346,7 @@ window.onload = function () {
     // Danger Trump
     function dangeTrump() {
         document.getElementById("trump-count").style.background = "#bd2130";
+        document.getElementById("trump-count").style.borderColor = "#bd2130";
         document.getElementById("trump-status").className = "";
         document.getElementById("trump-status").innerHTML = "";
         document.getElementById("trump-status").classList.add("fas")
