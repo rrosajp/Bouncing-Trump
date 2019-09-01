@@ -93,6 +93,9 @@ window.onload = function () {
         canvas.addEventListener("mouseup", onMouseUp);
         canvas.addEventListener("mouseout", onMouseOut);
 
+        // Set random Trump quote
+        quote = randomTrumpQuote();
+
         // Add Trump
         addTrump(image, 1);
 
@@ -272,6 +275,44 @@ window.onload = function () {
         return trump;
     }
 
+    // Helper function for the Trump quotes
+    function randomFrom(array) {
+        return array[Math.floor(Math.random() * array.length)];
+    }
+
+    // Get random Trump quote using one of the available functions
+    function randomTrumpQuote   () {
+        var func = randomFrom([getRndTrumpQuote1, getRndTrumpQuote2]);
+        (func)();
+    }
+
+    // Get random Trump quote from https://docs.tronalddump.io/
+    function getRndTrumpQuote1() {
+        var proxyUrl = 'https://cors-anywhere.herokuapp.com/',
+            targetUrl = 'https://api.whatdoestrumpthink.com/api/v1/quotes/random'
+        fetch(proxyUrl + targetUrl)
+            .then(blob => blob.json())
+            .then(data => {
+                quote = data.message.replace(/(?:https?|ftp):\/\/[\n\S]+/g, '');
+            })
+            .catch(e => {
+                console.log(e);
+                quote = "The wall just got ten feet taller.";
+            });
+    }
+
+    // Get random Trump quote from https://whatdoestrumpthink.com/api-docs
+    function getRndTrumpQuote2() {
+        let url = "https://api.whatdoestrumpthink.com/api/v1/quotes/random";
+
+        fetch(url)
+            .then(res => res.json())
+            .then((data) => {
+                quote = data.message;
+            })
+            .catch(err => { quote = "The wall just got ten feet taller."; throw err; });
+    }
+
     // Toggle remove Trump button
     function removeTrumpToggle() {
         // Show the remove trump button once there are more than 1 Trump
@@ -299,18 +340,16 @@ window.onload = function () {
         }
         else if (entities.length == 200) {
             swal({
-                title: "Oh Snap!",
-                text: "Bouncing Trump limit exceeded!",
-                icon: "error",
+                title: "Bouncing Trump limit exceeded!",
+                text: "\"" + quote + "\" -- Donald Trump",
+                icon: getRndTrump(),
                 closeOnClickOutside: false,
                 button: "OK",
-                timer: 10000,
+                // timer: 10000,
             })
             .then((value) => {
                 reset();
             });
-
-            console(swal.getState());
         }
         else if (entities.length <= 50) {
             happyTrump();
@@ -395,6 +434,9 @@ window.onload = function () {
 
         // Update Trump count
         updateTrumpCount();
+
+        // Set random Trump quote
+        quote = randomTrumpQuote();
     };
 
     // Start Bouncing Trump
