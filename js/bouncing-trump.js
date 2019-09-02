@@ -403,6 +403,22 @@ window.onload = function () {
         document.getElementById("trump-count").classList.add("flashit")
     }
 
+    // Trump Count/Status
+    document.getElementById('trump-count').onclick = function (e) {
+        plural = ((entities.length > 1) ? 's' : '');
+        swal({
+            title: entities.length + " Trump" + plural,
+            text: "\"" + quote + "\" -- Donald Trump",
+            icon: getRndTrump(),
+            closeOnClickOutside: false,
+            button: "OK",
+        })
+            .then((value) => {
+                // Set random Trump quote
+                quote = randomTrumpQuote();
+            });
+    };
+
     // Add Trump
     document.getElementById('add-trump').onclick = function (e) {
         // Add new Trump
