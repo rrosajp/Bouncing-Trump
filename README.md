@@ -1,5 +1,5 @@
 # Bouncing Trump
-This is one of the may ["dumb projects"](https://dumbprojects.com) that I have created. It was built based on [this tutorial](https://github.com/rembound/html5-canvas-images).
+This is one of the many ["dumb projects"](https://dumbprojects.com) that I have created. It was built based on [this tutorial](https://github.com/rembound/html5-canvas-images).
 
 [Bouncing Trump](https://bouncingtrump.com)
 
