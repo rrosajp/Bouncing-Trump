@@ -271,7 +271,7 @@ window.onload = function () {
 
     // Get a random Trump
     function getRndTrump() {
-        trump = "images/trump" + (Math.floor(Math.random() * (total_trumps - 1)) + 2) + ".png";
+        trump = "images/trump" + (Math.floor(Math.random() * total_trumps) + 1) + ".png";
         return trump;
     }
 
