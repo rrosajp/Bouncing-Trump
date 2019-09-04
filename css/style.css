@@ -38,8 +38,8 @@ body {
 }
 #trump-stats {
     position:fixed;
-    top:5px;
-    right:7px;
+    top: 7px;
+    right: 7px;
 }
 #trump-count {
     background: #1e7e34;
@@ -48,12 +48,12 @@ body {
 }
 #social {
     position:absolute;
-    bottom:5px;
-    left:5px;
+    bottom: 7px;
+    left: 7px;
 }
 #trump-controls {
     position:fixed;
-    bottom:5px;
+    bottom:7px;
     right:7px;
 }
 #remove-trump {
