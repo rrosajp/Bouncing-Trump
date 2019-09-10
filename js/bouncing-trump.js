@@ -280,29 +280,8 @@ window.onload = function () {
         return array[Math.floor(Math.random() * array.length)];
     }
 
-    // Get random Trump quote using one of the available functions
-    function randomTrumpQuote() {
-        var func = randomFrom([getRndTrumpQuote1, getRndTrumpQuote2]);
-        (func)();
-    }
-
-    // Get random Trump quote from https://docs.tronalddump.io/
-    function getRndTrumpQuote1() {
-        var proxyUrl = 'https://cors-anywhere.herokuapp.com/',
-            targetUrl = 'https://api.whatdoestrumpthink.com/api/v1/quotes/random'
-        fetch(proxyUrl + targetUrl)
-            .then(blob => blob.json())
-            .then(data => {
-                quote = data.message.replace(/(?:https?|ftp):\/\/[\n\S]+/g, '');
-            })
-            .catch(e => {
-                console.log(e);
-                quote = "The wall just got ten feet taller.";
-            });
-    }
-
     // Get random Trump quote from https://whatdoestrumpthink.com/api-docs
-    function getRndTrumpQuote2() {
+    function randomTrumpQuote() {
         let url = "https://api.whatdoestrumpthink.com/api/v1/quotes/random";
 
         fetch(url)
