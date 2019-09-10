@@ -339,7 +339,7 @@ window.onload = function () {
             dangeTrump();
         }
         else if (entities.length == 200) {
-            if (quote === "undefined") {
+            if (quote === undefined) {
                 quote = "The wall just got ten feet taller.";   
             }
             swal({
@@ -409,7 +409,7 @@ window.onload = function () {
     // Trump Count/Status
     document.getElementById('trump-count').onclick = function (e) {
         plural = ((entities.length > 1) ? 's' : '');
-        if (quote === "undefined") {
+        if (quote === undefined) {
             quote = "The wall just got ten feet taller.";   
         }
         swal({
