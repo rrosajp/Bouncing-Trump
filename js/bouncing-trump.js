@@ -281,7 +281,7 @@ window.onload = function () {
     }
 
     // Get random Trump quote using one of the available functions
-    function randomTrumpQuote   () {
+    function randomTrumpQuote() {
         var func = randomFrom([getRndTrumpQuote1, getRndTrumpQuote2]);
         (func)();
     }
@@ -339,6 +339,9 @@ window.onload = function () {
             dangeTrump();
         }
         else if (entities.length == 200) {
+            if (quote === "undefined") {
+                quote = "The wall just got ten feet taller.";   
+            }
             swal({
                 title: "Bouncing Trump limit exceeded!",
                 text: "\"" + quote + "\" -- Donald Trump",
@@ -406,6 +409,9 @@ window.onload = function () {
     // Trump Count/Status
     document.getElementById('trump-count').onclick = function (e) {
         plural = ((entities.length > 1) ? 's' : '');
+        if (quote === "undefined") {
+            quote = "The wall just got ten feet taller.";   
+        }
         swal({
             title: entities.length + " Trump" + plural,
             text: "\"" + quote + "\" -- Donald Trump",
