@@ -90,12 +90,23 @@
     </div>
 </div>
 <script src="js/bug-min.js"></script>
-<script>var date = new Date();
-let currentMonth = date.getMonth() + 1;
-let yourMonth = 10;
-if (yourMonth == currentMonth) {
-    document.getElementById("halloween-flare").style.visibility = "visible";
-    new SpiderController({"mouseOver": "nothing"});
+<script>
+    function getQueryVariable(variable)
+    {
+        let query = window.location.search.substring(1);
+        let vars = query.split("&");
+        for (let i=0;i<vars.length;i++) {
+            let pair = vars[i].split("=");
+            if(pair[0] == variable){return pair[1];}
+        }
+        return(false);
+    }
+    let date = new Date();
+    let currentMonth = date.getMonth() + 1;
+    let yourMonth = 10;
+    if (yourMonth == currentMonth || getQueryVariable("theme") == "spooky") {
+        document.getElementById("halloween-flare").style.visibility = "visible";
+        new SpiderController({"mouseOver": "nothing"});
 }
 </script>
 <!--End Halloween Flare-->
