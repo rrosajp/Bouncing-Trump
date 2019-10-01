@@ -192,7 +192,7 @@ body {
     border: 3px solid black;
     width: 100px;
     height: 75px;
-
+    background: black;
     border-radius: 50% 50%;
     box-shadow: inset 0px 0px 70px 0px black;
     position: absolute;
