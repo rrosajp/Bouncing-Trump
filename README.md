@@ -3,7 +3,7 @@ This is one of the many ["dumb projects"](https://dumbprojects.com) that I have 
 
 [Bouncing Trump](https://bouncingtrump.com)
 
-![alt text](https://dumbprojects.com/images/bouncing-trump.png "Bouncing Trump")
+![Bouncing Trump](https://dumbprojects.com/images/projects/bouncing-trump.png "Bouncing Trump")
 
 #### 3rd Party Tools/Scripts
 + [Bootstrap 4](https://getbootstrap.com/)
